@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">baldej</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="available_advert">Доступные объявления</string>
+    <string name="create_app">Создать объявление</string>
+    <string name="where_are_we_going">Откуда едем?</string>
+    <string name="where_we_go">Куда едем?</string>
+    <string name="price">Цена:</string>
+    <string name="places_count">Количество мест:</string>
+    <string name="pick_advert_time">Выбрать время</string>
+    <string name="notes_to_advert">Дополнительный комментарий</string>
+    <string name="publish">Опубликовать</string>
+    <string name="advert_is_published">Объявление опубликовано!</string>
+    <string name="my_profile">Мой профиль</string>
+    <string name="str_settings">Настройки</string>
+    <string name="reference">Справка</string>
+    <string name="str_exit">Выход</string>
+    <string name="str_trips">Поездки</string>
+    <string name="str_adverts">Объявления</string>
+    <string name="str_make_advert">Создать</string>
+    <string name="str_profile">Профиль</string>
+    <string name="enter_password">Введите пароль</string>
+    <string name="hse_edu_hse">Введите почту hse или edu.hse</string>
+    <string name="str_next">Далее</string>
+</resources>

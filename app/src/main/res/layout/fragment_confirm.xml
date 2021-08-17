@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.ConfirmFragment"
+        android:id="@+id/fragment_confirm">
+
+        <EditText
+            android:id="@+id/code_confirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:alpha="0.55"
+            android:backgroundTint="#000000"
+            android:drawableStart="@drawable/ic_key"
+            android:drawablePadding="10dp"
+            android:hint="Введите код"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/text_default"
+            android:textColorHint="@color/text_default"
+            app:layout_constraintBottom_toTopOf="@id/go_bttn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/go_bttn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/button_corners"
+            android:padding="10dp"
+            android:paddingStart="90dp"
+            android:paddingEnd="90dp"
+            android:shadowColor="@color/black"
+            android:text="@string/str_next"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

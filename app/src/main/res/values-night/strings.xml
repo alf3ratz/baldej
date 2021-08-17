@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="available_advert">Доступные объявления</string>
+    <string name="where_are_we_going">Откуда едем?</string>
+    <string name="where_we_go">Куда едем?</string>
+</resources>

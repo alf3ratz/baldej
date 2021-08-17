@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mainFragment"
+        android:icon="@drawable/ic_home"
+        android:title="@string/str_trips" />
+    <item
+        android:id="@+id/advertisementFragment"
+        android:icon="@drawable/ic_magnifier"
+        android:title="@string/str_adverts" />
+
+<!--    <item-->
+<!--        android:id="@+id/advertisementCreationFragment"-->
+<!--        android:icon="@drawable/ic_plus"-->
+<!--        android:title="@string/str_make_advert" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/profileFragment"-->
+<!--        android:icon="@drawable/ic_user"-->
+<!--        android:title="@string/str_profile" />-->
+    <item
+        android:id="@+id/loginFragment"
+        android:icon="@drawable/ic_a_point"
+        android:title="@string/str_profile" />
+    <item
+        android:id="@+id/confirmFragment"
+        android:icon="@drawable/ic_b_point"
+        android:title="фывфыв" />
+
+
+</menu>

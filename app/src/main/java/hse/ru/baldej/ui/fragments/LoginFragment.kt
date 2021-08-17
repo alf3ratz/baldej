@@ -18,7 +18,8 @@ import hse.ru.baldej.viewmodels.LoginViewModel
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
-    companion object{
+
+    companion object {
         var confirmCode = 0
     }
 //    override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,22 +41,24 @@ class LoginFragment : Fragment() {
         binding.apply {
             goBttn.setOnClickListener {
                 val login = loginEdit.text.toString()
-                val password = passwordEdit.text.toString()
-                if (login.isNotBlank() && login.isNotEmpty() && password.isNotBlank() && password.isNotEmpty()
+                //val password = passwordEdit.text.toString()
+                if (login.isNotBlank() && login.isNotEmpty() /*password.isNotBlank() && password.isNotEmpty()*/
                 ) {
                     if (login.endsWith("@hse.ru") || login.endsWith("@edu.hse.ru")) {
-//                        if (viewModel.registerAccount(login, password)) {
-////
-////                        }
-                        Log.i("fail",login)
-                        viewModel.registerAccount(login,password).observe((activity as MainActivity),{ response: LoginResponse? ->
-                            if(response != null){
+                        Log.i("fail", login)
+                        viewModel.registerAccount(login)
+                            .observe((activity as MainActivity), { response: LoginResponse? ->
+                                if (response != null) {
                                     confirmCode = response.registrationCode
-                                        //(activity as MainActivity).navigationController.navigate(R.id.fragment_confirm)
-                            }else{
-                                Toast.makeText(context,"null",Toast.LENGTH_LONG).show()
-                            }
-                        })
+                                    (activity as MainActivity).navigationController.navigate(R.id.confirmFragment)
+                                } else {
+                                    Toast.makeText(
+                                        context,
+                                        "Ошибка получения кода, попробуйте снова через некоторое время",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }
+                            })
                     }
                 } else {
                     Toast.makeText(context, "Заполните все поля правильно", Toast.LENGTH_LONG)

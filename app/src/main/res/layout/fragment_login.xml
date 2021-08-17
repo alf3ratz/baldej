@@ -35,28 +35,28 @@
             android:maxLines="1"
             android:textColor="@color/text_default"
             android:textColorHint="@color/text_default"
-            app:layout_constraintBottom_toTopOf="@id/password_edit"
+            app:layout_constraintBottom_toTopOf="@id/go_bttn"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/password_edit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp"
-            android:alpha="0.55"
-            android:backgroundTint="#000000"
-            android:drawableStart="@drawable/ic_key"
-            android:drawablePadding="10dp"
-            android:hint="@string/enter_password"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:textColor="@color/text_default"
-            android:textColorHint="@color/text_default"
-            app:layout_constraintBottom_toTopOf="@id/go_bttn"
-            app:layout_constraintEnd_toEndOf="@id/login_edit"
-            app:layout_constraintStart_toStartOf="@id/login_edit" />
+<!--        <EditText-->
+<!--            android:id="@+id/password_edit"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="48dp"-->
+<!--            android:alpha="0.55"-->
+<!--            android:backgroundTint="#000000"-->
+<!--            android:drawableStart="@drawable/ic_key"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:hint="@string/enter_password"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:maxLines="1"-->
+<!--            android:textColor="@color/text_default"-->
+<!--            android:textColorHint="@color/text_default"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/go_bttn"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/login_edit"-->
+<!--            app:layout_constraintStart_toStartOf="@id/login_edit" />-->
 
         <Button
             android:id="@+id/go_bttn"

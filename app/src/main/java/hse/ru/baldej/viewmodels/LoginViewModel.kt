@@ -11,8 +11,8 @@ class LoginViewModel(@NonNull application: Application) : AndroidViewModel(appli
     private var loginRepository: LoginRepository =
         LoginRepository()
 
-    fun registerAccount(login:String, password:String): LiveData<LoginResponse> {
-        return loginRepository.registerAccount(login, password)
+    fun registerAccount(login:String): LiveData<LoginResponse> {
+        return loginRepository.registerAccount(login)
     }
 
 }

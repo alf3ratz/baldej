@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val navOptions =
             builder
                 .build()
-//        Navigation.findNavController(binding.root).navigate(R.id.fragment_login);
+       navigationController.navigate(R.id.loginFragment);
 //        navigationController.navigate(R.id.fragment_login, null, navOptions)
         //navigationController.navigate(R.id.fragment_login)
         //}

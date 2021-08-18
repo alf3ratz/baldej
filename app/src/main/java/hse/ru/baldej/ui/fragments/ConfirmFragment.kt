@@ -1,14 +1,15 @@
 package hse.ru.baldej.ui.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import hse.ru.baldej.R
 import hse.ru.baldej.databinding.FragmentConfirmBinding
-import hse.ru.baldej.databinding.FragmentLoginBinding
+import hse.ru.baldej.ui.activities.MainActivity
 
 class ConfirmFragment : Fragment() {
 
@@ -24,7 +25,7 @@ class ConfirmFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentConfirmBinding.inflate(inflater, container, false)
         return binding.root
@@ -35,11 +36,54 @@ class ConfirmFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             goBttn.setOnClickListener {
-                if (codeConfirm.text.toString().toInt().equals(LoginFragment.confirmCode)) {
-                    Toast.makeText(context, "Код совпадает!", Toast.LENGTH_LONG).show()
+                if (codeConfirm.text.toString().toInt() == LoginFragment.confirmCode) {
+                    (activity as MainActivity).apply {
+                        menu.visibility = View.VISIBLE
+                        navigationController.navigate(R.id.mainFragment)
+                    }
+
+                } else {
+                    Toast.makeText(context, "Введён неверный код!", Toast.LENGTH_LONG).show()
+                }
+            }
+            wrongCodeText.setOnClickListener {
+//                val builder = AlertDialog.Builder(activity)
+//                builder
+//                    .setTitle("Вернуться на страницу отправки кода?")
+//                    //.setMessage("Покормите кота!")
+//                    .setIcon(R.drawable.logo)
+//                    .setPositiveButton("ДА") { dialog, id ->
+//                        (activity as MainActivity).navigationController.navigate(R.id.loginFragment)
+//                    }
+//                    .setNegativeButton("Нет") { dialog, id ->
+//                        dialog.cancel()
+//                    }
+//                builder.create()
+                activity?.let {
+                    val builder = AlertDialog.Builder(it)
+                    builder.setTitle("Вернуться на страницу отправки кода?")
+                        //.setMessage("Выбери пищу")
+                        .setCancelable(true)
+                        .setPositiveButton("ДА") { dialog, id ->
+                            (activity as MainActivity).navigationController.navigate(R.id.loginFragment)
+                        }
+                        .setNegativeButton("Нет") { dialog, id ->
+                            dialog.cancel()
+                        }
+//                        .setPositiveButton("Вкусная пища") { dialog, id ->
+//                            Toast.makeText(activity, "Вы сделали правильный выбор",
+//                                Toast.LENGTH_LONG).show()
+//                        }
+//                        .setNegativeButton("Здоровая пища",
+//                            DialogInterface.OnClickListener { dialog, id ->
+//                                Toast.makeText(activity, "Возможно вы правы",
+//                                    Toast.LENGTH_LONG).show()
+//                            })
+                    //val manager: FragmentManager = getSupportFragmentManager()
+                    builder.create().show()
                 }
             }
         }
-    }
 
+    }
 }

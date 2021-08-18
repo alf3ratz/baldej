@@ -8,29 +8,39 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_confirm"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragments.ConfirmFragment"
-        android:id="@+id/fragment_confirm">
+        tools:context=".ui.fragments.ConfirmFragment">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="62dp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <EditText
             android:id="@+id/code_confirm"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp"
+            android:layout_marginBottom="25dp"
             android:alpha="0.55"
             android:backgroundTint="#000000"
             android:drawableStart="@drawable/ic_key"
             android:drawablePadding="10dp"
             android:hint="Введите код"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
             android:maxLines="1"
             android:textColor="@color/text_default"
             android:textColorHint="@color/text_default"
             app:layout_constraintBottom_toTopOf="@id/go_bttn"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/go_bttn"
@@ -49,6 +59,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/wrong_code_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Не пришел код?"
+            android:textColor="@color/teal_700"
+            app:layout_constraintTop_toBottomOf="@id/go_bttn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="10dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

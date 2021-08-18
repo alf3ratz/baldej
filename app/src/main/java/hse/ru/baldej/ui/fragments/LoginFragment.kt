@@ -1,5 +1,6 @@
 package hse.ru.baldej.ui.fragments
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,10 +23,11 @@ class LoginFragment : Fragment() {
     companion object {
         var confirmCode = 0
     }
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,35 +40,48 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).menu.visibility = View.GONE
         binding.apply {
             goBttn.setOnClickListener {
-                val login = loginEdit.text.toString()
-                //val password = passwordEdit.text.toString()
-                if (login.isNotBlank() && login.isNotEmpty() /*password.isNotBlank() && password.isNotEmpty()*/
-                ) {
-                    if (login.endsWith("@hse.ru") || login.endsWith("@edu.hse.ru")) {
-                        Log.i("fail", login)
-                        viewModel.registerAccount(login)
-                            .observe((activity as MainActivity), { response: LoginResponse? ->
-                                if (response != null) {
-                                    confirmCode = response.registrationCode
-                                    (activity as MainActivity).navigationController.navigate(R.id.confirmFragment)
-                                } else {
-                                    Toast.makeText(
-                                        context,
-                                        "Ошибка получения кода, попробуйте снова через некоторое время",
-                                        Toast.LENGTH_LONG
-                                    ).show()
-                                }
-                            })
-                    }
-                } else {
-                    Toast.makeText(context, "Заполните все поля правильно", Toast.LENGTH_LONG)
-                        .show()
-                }
+                sendRegistrationCode()
             }
         }
 
+
+    }
+
+    private fun sendRegistrationCode() {
+        val login = binding.loginEdit.text.toString()
+        //val password = passwordEdit.text.toString()
+        if (login.isNotBlank() && login.isNotEmpty() /*password.isNotBlank() && password.isNotEmpty()*/
+        ) {
+            if (login.endsWith("@hse.ru") || login.endsWith("@edu.hse.ru")) {
+                Log.i("fail", login)
+                viewModel.registerAccount(login)
+                    .observe((activity as MainActivity), { response: LoginResponse? ->
+                        if (response != null) {
+                            confirmCode = response.registrationCode
+                            val editor: SharedPreferences.Editor =
+                                (activity as MainActivity).mySharedPreferences!!.edit()
+                            editor.putString(
+                                (activity as MainActivity).REGISTRATION_CODE_PREFERENCES,
+                                response.registrationCode.toString()
+                            )
+                            editor.apply()
+                            (activity as MainActivity).navigationController.navigate(R.id.confirmFragment)
+                        } else {
+                            Toast.makeText(
+                                context,
+                                "Ошибка получения кода, попробуйте снова через некоторое время",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    })
+            }
+        } else {
+            Toast.makeText(context, "Заполните все поля правильно", Toast.LENGTH_LONG)
+                .show()
+        }
     }
 
 

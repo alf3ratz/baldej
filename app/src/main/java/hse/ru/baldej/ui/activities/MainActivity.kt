@@ -1,5 +1,7 @@
 package hse.ru.baldej.ui.activities
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -7,25 +9,28 @@ import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.FirebaseAuth
 import hse.ru.baldej.R
 import hse.ru.baldej.databinding.ActivityMainBinding
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.auth.ktx.auth
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    public lateinit var navigationController: NavController
+    lateinit var navigationController: NavController
+    var mySharedPreferences: SharedPreferences? = null
+    val REGISTRATION_CODE_PREFERENCES = "registrationCode"
+    lateinit var menu: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //FirebaseApp.initializeApp(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val bottomMenu: BottomNavigationView = findViewById(R.id.bottom_menu)
+        menu = findViewById(R.id.bottom_menu)
+        binding.bottomMenu.apply {
+            menu
+        }
         navigationController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupWithNavController(bottomMenu, navigationController)
+        NavigationUI.setupWithNavController(binding.bottomMenu, navigationController)
 //        val auth = Firebase.auth
 //        if (auth.currentUser != null) {
 //
@@ -34,7 +39,14 @@ class MainActivity : AppCompatActivity() {
         val navOptions =
             builder
                 .build()
-       navigationController.navigate(R.id.loginFragment);
+        mySharedPreferences =
+            getPreferences(Context.MODE_PRIVATE)//getSharedPreferences(REGISTRATION_CODE_PREFERENCES, Context.MODE_PRIVATE)
+        if (mySharedPreferences!!.contains(REGISTRATION_CODE_PREFERENCES)) {
+            navigationController.navigate(R.id.mainFragment)
+        } else {
+            navigationController.navigate(R.id.loginFragment);
+        }
+        //navigationController.navigate(R.id.loginFragment);
 //        navigationController.navigate(R.id.fragment_login, null, navOptions)
         //navigationController.navigate(R.id.fragment_login)
         //}

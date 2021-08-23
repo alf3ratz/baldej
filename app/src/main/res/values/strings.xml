@@ -27,4 +27,5 @@
     <string name="companions_str">Попутчики</string>
     <string name="current">Текущее</string>
     <string name="history_str">История</string>
+    <string name="current_str">Текущие</string>
 </resources>

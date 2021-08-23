@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var navigationController: NavController
     var mySharedPreferences: SharedPreferences? = null
     val REGISTRATION_CODE_PREFERENCES = "registrationCode"
+    val EMAIL_STR = "email"
+    val BITMAP_STR = "bitmap"
     lateinit var menu: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             getPreferences(Context.MODE_PRIVATE)//getSharedPreferences(REGISTRATION_CODE_PREFERENCES, Context.MODE_PRIVATE)
         if (mySharedPreferences!!.contains(REGISTRATION_CODE_PREFERENCES)) {
             navigationController.navigate(R.id.mainFragment)
+            //navigationController.navigate(R.id.historyFragment)
         } else {
             navigationController.navigate(R.id.loginFragment);
         }

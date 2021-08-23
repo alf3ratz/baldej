@@ -1,5 +1,6 @@
 package hse.ru.baldej.ui.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import hse.ru.baldej.R
 import hse.ru.baldej.adapters.ViewPagerAdapter
 import hse.ru.baldej.databinding.FragmentMainBinding
+import hse.ru.baldej.ui.activities.MainActivity
 
 class MainFragment : Fragment() {
 
@@ -40,5 +42,11 @@ class MainFragment : Fragment() {
                 1 -> tab.text = getString(R.string.companions_str)
             }
         }.attach()
+        binding.apply {
+            currentText.setTextColor(Color.BLACK)
+            historyText.setOnClickListener {
+                (activity as MainActivity).navigationController.navigate(R.id.historyFragment)
+            }
+        }
     }
 }

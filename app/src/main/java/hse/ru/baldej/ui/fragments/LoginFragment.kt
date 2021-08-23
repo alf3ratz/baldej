@@ -1,7 +1,11 @@
 package hse.ru.baldej.ui.fragments
 
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +18,7 @@ import hse.ru.baldej.databinding.FragmentLoginBinding
 import hse.ru.baldej.responses.LoginResponse
 import hse.ru.baldej.ui.activities.MainActivity
 import hse.ru.baldej.viewmodels.LoginViewModel
+import java.io.ByteArrayOutputStream
 
 
 class LoginFragment : Fragment() {
@@ -67,8 +72,9 @@ class LoginFragment : Fragment() {
                                     mySharedPreferences!!.edit()
                                 editor.putString(
                                     REGISTRATION_CODE_PREFERENCES,
-                                    response.registrationCode.toString()
+                                    confirmCode.toString()
                                 )
+                                editor.putString(EMAIL_STR, email)
                                 editor.apply()
                                 navigationController.navigate(R.id.confirmFragment)
                             }

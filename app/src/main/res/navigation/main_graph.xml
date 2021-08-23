@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_mainFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
     </fragment>
     <fragment
         android:id="@+id/advertisementFragment"
@@ -80,4 +83,8 @@
             android:id="@+id/action_confirmFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="hse.ru.baldej.ui.fragments.HistoryFragment"
+        android:label="HistoryFragment" />
 </navigation>

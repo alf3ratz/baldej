@@ -25,4 +25,6 @@
     <string name="str_next">Далее</string>
     <string name="my_trips_str">Мои поездки</string>
     <string name="companions_str">Попутчики</string>
+    <string name="current">Текущее</string>
+    <string name="history_str">История</string>
 </resources>

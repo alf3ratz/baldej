@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.tabs.TabLayoutMediator
+import hse.ru.baldej.R
+import hse.ru.baldej.adapters.ViewPagerAdapter
 import hse.ru.baldej.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -27,6 +30,15 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.viewPager.adapter = ViewPagerAdapter(this)
+        TabLayoutMediator(
+            binding.tabLayout,
+            binding.viewPager
+        ) { tab, position ->
+            when (position) {
+                0 -> tab.text = getString(R.string.my_trips_str)
+                1 -> tab.text = getString(R.string.companions_str)
+            }
+        }.attach()
     }
 }

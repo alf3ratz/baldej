@@ -23,4 +23,6 @@
     <string name="enter_password">Введите пароль</string>
     <string name="hse_edu_hse">Введите почту hse или edu.hse</string>
     <string name="str_next">Далее</string>
+    <string name="my_trips_str">Мои поездки</string>
+    <string name="companions_str">Попутчики</string>
 </resources>

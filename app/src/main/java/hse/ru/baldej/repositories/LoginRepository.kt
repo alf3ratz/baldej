@@ -24,7 +24,6 @@ class LoginRepository {
             override fun onFailure(@NonNull call: Call<LoginResponse>, t: Throwable) {
                 data.value = null
             }
-
             override fun onResponse(
                 @NonNull call: Call<LoginResponse>,
                 @NonNull response: Response<LoginResponse>

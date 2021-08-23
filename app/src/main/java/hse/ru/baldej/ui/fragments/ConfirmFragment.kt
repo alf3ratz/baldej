@@ -47,22 +47,9 @@ class ConfirmFragment : Fragment() {
                 }
             }
             wrongCodeText.setOnClickListener {
-//                val builder = AlertDialog.Builder(activity)
-//                builder
-//                    .setTitle("Вернуться на страницу отправки кода?")
-//                    //.setMessage("Покормите кота!")
-//                    .setIcon(R.drawable.logo)
-//                    .setPositiveButton("ДА") { dialog, id ->
-//                        (activity as MainActivity).navigationController.navigate(R.id.loginFragment)
-//                    }
-//                    .setNegativeButton("Нет") { dialog, id ->
-//                        dialog.cancel()
-//                    }
-//                builder.create()
                 activity?.let {
                     val builder = AlertDialog.Builder(it)
                     builder.setTitle("Вернуться на страницу отправки кода?")
-                        //.setMessage("Выбери пищу")
                         .setCancelable(true)
                         .setPositiveButton("ДА") { dialog, id ->
                             (activity as MainActivity).navigationController.navigate(R.id.loginFragment)
@@ -70,16 +57,6 @@ class ConfirmFragment : Fragment() {
                         .setNegativeButton("Нет") { dialog, id ->
                             dialog.cancel()
                         }
-//                        .setPositiveButton("Вкусная пища") { dialog, id ->
-//                            Toast.makeText(activity, "Вы сделали правильный выбор",
-//                                Toast.LENGTH_LONG).show()
-//                        }
-//                        .setNegativeButton("Здоровая пища",
-//                            DialogInterface.OnClickListener { dialog, id ->
-//                                Toast.makeText(activity, "Возможно вы правы",
-//                                    Toast.LENGTH_LONG).show()
-//                            })
-                    //val manager: FragmentManager = getSupportFragmentManager()
                     builder.create().show()
                 }
             }

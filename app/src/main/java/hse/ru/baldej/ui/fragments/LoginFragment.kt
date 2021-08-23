@@ -22,6 +22,7 @@ class LoginFragment : Fragment() {
 
     companion object {
         var confirmCode = 0
+        var email = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +53,6 @@ class LoginFragment : Fragment() {
 
     private fun sendRegistrationCode() {
         val login = binding.loginEdit.text.toString()
-        //val password = passwordEdit.text.toString()
         if (login.isNotBlank() && login.isNotEmpty() /*password.isNotBlank() && password.isNotEmpty()*/
         ) {
             if (login.endsWith("@hse.ru") || login.endsWith("@edu.hse.ru")) {
@@ -61,14 +61,17 @@ class LoginFragment : Fragment() {
                     .observe((activity as MainActivity), { response: LoginResponse? ->
                         if (response != null) {
                             confirmCode = response.registrationCode
-                            val editor: SharedPreferences.Editor =
-                                (activity as MainActivity).mySharedPreferences!!.edit()
-                            editor.putString(
-                                (activity as MainActivity).REGISTRATION_CODE_PREFERENCES,
-                                response.registrationCode.toString()
-                            )
-                            editor.apply()
-                            (activity as MainActivity).navigationController.navigate(R.id.confirmFragment)
+                            email = response.email
+                            (activity as MainActivity).apply {
+                                val editor: SharedPreferences.Editor =
+                                    mySharedPreferences!!.edit()
+                                editor.putString(
+                                    REGISTRATION_CODE_PREFERENCES,
+                                    response.registrationCode.toString()
+                                )
+                                editor.apply()
+                                navigationController.navigate(R.id.confirmFragment)
+                            }
                         } else {
                             Toast.makeText(
                                 context,

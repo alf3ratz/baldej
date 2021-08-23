@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Бакалавриат группа 205-2019"
+            android:text="-----------------------------------------"
             android:textColor="#0050AE"
             android:textSize="18sp"
             app:layout_constraintLeft_toRightOf="@id/profile_image"

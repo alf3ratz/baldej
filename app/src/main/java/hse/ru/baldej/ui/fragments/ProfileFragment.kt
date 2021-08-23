@@ -35,15 +35,19 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             exit.setOnClickListener {
-                val editor: SharedPreferences.Editor =
-                    (activity as MainActivity).mySharedPreferences!!.edit()
-                editor.remove((activity as MainActivity).REGISTRATION_CODE_PREFERENCES)
-                editor.apply()
-                if((activity as MainActivity).mySharedPreferences!!.contains((activity as MainActivity).REGISTRATION_CODE_PREFERENCES)){
-                    Toast.makeText(context,"Не удалил",Toast.LENGTH_LONG).show()
+                (activity as MainActivity).apply {
+                    val editor: SharedPreferences.Editor = mySharedPreferences!!.edit()
+                    editor.remove(REGISTRATION_CODE_PREFERENCES)
+                    editor.apply()
+                    if (mySharedPreferences!!.contains(REGISTRATION_CODE_PREFERENCES)) {
+                        Toast.makeText(context, "Не удалил", Toast.LENGTH_LONG).show()
+                    }
+                    navigationController.navigate(R.id.loginFragment)
                 }
-                (activity as MainActivity).navigationController.navigate(R.id.loginFragment)
             }
+            email.text = LoginFragment.email
+            val name = LoginFragment.email.substringBefore("@")
+            nameLastName.text = name
         }
     }
 

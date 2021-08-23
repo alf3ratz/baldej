@@ -6,4 +6,6 @@ class LoginResponse {
 
     @SerializedName("code")
     var registrationCode:Int = 0
+    @SerializedName("email")
+    var email:String = ""
 }
